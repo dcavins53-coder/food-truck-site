@@ -1,0 +1,55 @@
+/* Custom Styles for Bayou Boudin & Bites */
+
+body {
+  background-color: #fcfbfa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333333;
+}
+
+header {
+  background: linear-gradient(135deg, #ffc107, #ff9800) !important;
+  color: #212529;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+}
+
+header h1 {
+  letter-spacing: -0.5px;
+}
+
+/* Card Styling & Hover Animation */
+.card {
+  transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card-title {
+  color: #7b3f00; /* Warm Creole-inspired spice accent */
+  font-weight: 700;
+}
+
+.card-text {
+  color: #555555;
+  font-size: 0.95rem;
+}
+
+/* Button Customization */
+.btn-dark {
+  background-color: #212529;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 28px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.btn-dark:hover {
+  background-color: #383d41;
+}
