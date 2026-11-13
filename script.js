@@ -55,3 +55,20 @@ function displayMenu(items) {
 document.addEventListener('DOMContentLoaded', () => {
   displayMenu(menuItems);
 });
+// Get the "See the menu" button by its class or href
+const menuButton = document.querySelector('header a[href="#menu"]');
+
+if (menuButton) {
+  menuButton.addEventListener('click', function(event) {
+    // Prevent the instant jump
+    event.preventDefault();
+
+    // Smoothly scroll to the menu section
+    const menuSection = document.getElementById('menu');
+    if (menuSection) {
+      menuSection.scrollIntoView({ 
+        behavior: 'smooth' 
+      });
+    }
+  });
+}

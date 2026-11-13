@@ -1,5 +1,8 @@
 /* Custom Styles for Bayou Boudin & Bites */
-
+/* Add this at the very top of your style.css */
+html {
+  scroll-behavior: smooth;
+}
 body {
   background-color: #fcfbfa;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
