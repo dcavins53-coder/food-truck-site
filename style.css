@@ -1,15 +1,15 @@
-/* Smooth scrolling when clicking the "See the menu" anchor link */
+
 html {
   scroll-behavior: smooth;
 }
 
-/* Optional: Custom styling for your truck header or cards */
+
 body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background-color: #f8f9fa;
 }
 
-/* Optional hover effect on menu cards */
+
 .card {
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }

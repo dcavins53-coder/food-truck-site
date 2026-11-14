@@ -1,4 +1,4 @@
-// 1. Define your menu items in an array of objects
+
 const menuItems = [
   {
     title: "Crawfish Étouffée",
@@ -17,20 +17,20 @@ const menuItems = [
   }
 ];
 
-// 2. Select the container where cards will live
+
 const menuContainer = document.getElementById('menu-container');
 
-// 3. Function to render the menu
+
 function displayMenu(items) {
-  // Clear any existing content
+  
   menuContainer.innerHTML = '';
 
   items.forEach(item => {
-    // Create column wrapper
+    
     const colDiv = document.createElement('div');
     colDiv.className = 'col-md-4';
 
-    // Create card structure safely
+    
     colDiv.innerHTML = `
       <div class="card h-100 shadow-sm">
         <div class="card-body d-flex flex-column">
@@ -41,29 +41,28 @@ function displayMenu(items) {
       </div>
     `;
 
-    // Populate text safely using textContent to prevent XSS
+    
     colDiv.querySelector('.card-title').textContent = item.title;
     colDiv.querySelector('.card-text').textContent = item.description;
     colDiv.querySelector('.price-tag').textContent = item.price;
 
-    // Append to container
     menuContainer.appendChild(colDiv);
   });
 }
 
-// 4. Run function on page load
+
 document.addEventListener('DOMContentLoaded', () => {
   displayMenu(menuItems);
 });
-// Get the "See the menu" button by its class or href
+
 const menuButton = document.querySelector('header a[href="#menu"]');
 
 if (menuButton) {
   menuButton.addEventListener('click', function(event) {
-    // Prevent the instant jump
+
     event.preventDefault();
 
-    // Smoothly scroll to the menu section
+    
     const menuSection = document.getElementById('menu');
     if (menuSection) {
       menuSection.scrollIntoView({ 
