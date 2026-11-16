@@ -71,3 +71,5 @@ if (menuButton) {
     }
   });
 }
+const colDiv = document.createElement('div');
+colDiv.className = 'col-md-4';

@@ -10,18 +10,24 @@
 </head>
 <body>
 
-  <header class="bg-warning text-center py-5">
-    <h1 class="display-4 fw-bold">Bayou Boudin &amp; Bites</h1>
-    <p class="lead">Serving up authentic Creole and Cajun favorites hot off the grill!</p>
-    <a href="#menu" class="btn btn-dark btn-lg">See the menu</a>
+  <!-- Responsive Header with fluid padding and text scaling -->
+  <header class="bg-warning text-center py-5 px-3">
+    <div class="container">
+      <h1 class="display-5 display-md-4 fw-bold">Bayou Boudin &amp; Bites</h1>
+      <p class="lead fs-6 fs-md-5">Serving up authentic Creole and Cajun favorites hot off the grill!</p>
+      <a href="#menu" class="btn btn-dark btn-lg mt-2">See the menu</a>
+    </div>
   </header>
 
-  <main class="container py-5">
+  <!-- Main Content Container -->
+  <main class="container py-5 px-3 px-md-0">
     <section id="menu">
-      <h2 class="mb-4">Menu</h2>
-      <div class="row g-4" id="menu-container"></div>
+      <h2 class="mb-4 text-center text-md-start">Menu</h2>
+      <!-- Row container where JavaScript injects responsive column cards -->
+      <div class="row g-4 justify-content-center" id="menu-container"></div>
     </section>
   </main>
+
   <script src="script.js"></script>
 </body>
 </html>
