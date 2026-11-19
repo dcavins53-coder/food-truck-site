@@ -1,4 +1,3 @@
-
 const menuItems = [
   {
     title: "Crawfish Étouffée",
@@ -17,20 +16,15 @@ const menuItems = [
   }
 ];
 
-
 const menuContainer = document.getElementById('menu-container');
 
-
 function displayMenu(items) {
-  
   menuContainer.innerHTML = '';
 
   items.forEach(item => {
-    
     const colDiv = document.createElement('div');
     colDiv.className = 'col-md-4';
 
-    
     colDiv.innerHTML = `
       <div class="card h-100 shadow-sm">
         <div class="card-body d-flex flex-column">
@@ -41,7 +35,6 @@ function displayMenu(items) {
       </div>
     `;
 
-    
     colDiv.querySelector('.card-title').textContent = item.title;
     colDiv.querySelector('.card-text').textContent = item.description;
     colDiv.querySelector('.price-tag').textContent = item.price;
@@ -49,7 +42,6 @@ function displayMenu(items) {
     menuContainer.appendChild(colDiv);
   });
 }
-
 
 document.addEventListener('DOMContentLoaded', () => {
   displayMenu(menuItems);
@@ -59,10 +51,8 @@ const menuButton = document.querySelector('header a[href="#menu"]');
 
 if (menuButton) {
   menuButton.addEventListener('click', function(event) {
-
     event.preventDefault();
 
-    
     const menuSection = document.getElementById('menu');
     if (menuSection) {
       menuSection.scrollIntoView({ 
@@ -71,5 +61,35 @@ if (menuButton) {
     }
   });
 }
-const colDiv = document.createElement('div');
-colDiv.className = 'col-md-4';
+
+// First: put YOUR truck's city here (Coordinates for Oakdale, LA)
+const latitude = 30.82;
+const longitude = -92.66;
+
+// Add &temperature_unit=fahrenheit to the end of the URL
+const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,wind_speed_10m&temperature_unit=fahrenheit`;
+
+async function getWeather() {
+  // Step 1: Send the request
+  const response = await fetch(url);
+  console.log("Status:", response.status);
+  const data = await response.json();
+  console.log(data);
+
+  // Step 2: Dig out one value (YOUR TURN)
+  console.log(data.current.wind_speed_10m);
+
+  // Step 3: Put it on the page
+  const weather = document.querySelector("#weather");
+  weather.textContent =
+    "Temperature: " +
+    data.current.temperature_2m +
+    " " +
+    data.current_units.temperature_2m +
+    ". Wind: " +
+    data.current.wind_speed_10m +
+    " " +
+    data.current_units.wind_speed_10m;
+}
+
+getWeather();
