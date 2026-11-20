@@ -62,34 +62,41 @@ if (menuButton) {
   });
 }
 
-// First: put YOUR truck's city here (Coordinates for Oakdale, LA)
+// Coordinates for Oakdale, LA
 const latitude = 30.82;
 const longitude = -92.66;
 
-// Add &temperature_unit=fahrenheit to the end of the URL
-const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,wind_speed_10m&temperature_unit=fahrenheit`;
+// Part 5: Added &wind_speed_unit=mph and &timezone=auto from the Open-Meteo docs
+const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=auto`;
 
 async function getWeather() {
-  // Step 1: Send the request
+  const weatherArea = document.querySelector("#weather");
+
+  // Clear existing content so clicking/running twice doesn't duplicate
+  weatherArea.textContent = "";
+
+  // Send the request
   const response = await fetch(url);
   console.log("Status:", response.status);
   const data = await response.json();
   console.log(data);
 
-  // Step 2: Dig out one value (YOUR TURN)
-  console.log(data.current.wind_speed_10m);
+  // Part 4: Show 3 values on the page using createElement + textContent
+  const tempP = document.createElement("p");
+  tempP.className = "mb-1";
+  tempP.textContent = `Temperature: ${data.current.temperature_2m} ${data.current_units.temperature_2m}`;
 
-  // Step 3: Put it on the page
-  const weather = document.querySelector("#weather");
-  weather.textContent =
-    "Temperature: " +
-    data.current.temperature_2m +
-    " " +
-    data.current_units.temperature_2m +
-    ". Wind: " +
-    data.current.wind_speed_10m +
-    " " +
-    data.current_units.wind_speed_10m;
+  const windP = document.createElement("p");
+  windP.className = "mb-1";
+  windP.textContent = `Wind Speed: ${data.current.wind_speed_10m} ${data.current_units.wind_speed_10m}`;
+
+  const timeP = document.createElement("p");
+  timeP.className = "mb-0";
+  timeP.textContent = `Time: ${data.current.time} (${data.timezone_abbreviation})`;
+
+  weatherArea.appendChild(tempP);
+  weatherArea.appendChild(windP);
+  weatherArea.appendChild(timeP);
 }
 
 getWeather();
